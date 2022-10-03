@@ -1,5 +1,6 @@
 package com.practice.apirestapp.ui.activities
 
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.Observer
@@ -21,13 +22,12 @@ class MainActivity : AppCompatActivity() {
         binding.tvBeerName.text = newName
     }
 
-
-    private val beerUriObserver = Observer<String> { newURI ->
+    private val beerUriObserver = Observer<Uri> { newURI ->
         Picasso.get().load(newURI).into(binding.imgBeer)
     }
 
     private val beerDescriptionObserver = Observer<String> { newDescription ->
-        binding.tvBeerName.text = newDescription
+        binding.tvBeerDescription.text = newDescription
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,6 +35,14 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        vm.beerName.observe(this,beerNameObserver)
+        vm.beerId.observe(this,beerIdObserver)
+        vm.beerImageUrl.observe(this,beerUriObserver)
+        vm.beerDescription.observe(this,beerDescriptionObserver)
+
+        binding.imgBeer.setOnClickListener{
+            vm.getAnotherBeer()
+        }
 
     }
 }

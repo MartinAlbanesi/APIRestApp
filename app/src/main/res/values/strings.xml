@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">APIRestApp</string>
+    <string name="beer_name">beer name</string>
+    <string name="beer_id">beer id</string>
+    <string name="beer_description">beer description</string>
+    <string name="beer_img_desc">beer image</string>
 </resources>

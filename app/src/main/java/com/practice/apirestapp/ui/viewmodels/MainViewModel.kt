@@ -6,14 +6,32 @@ import androidx.lifecycle.viewModelScope
 import com.practice.apirestapp.data.repositories.BeerRepository
 import com.practice.apirestapp.data.repositories.beers.api.models.APIBeerModel
 import kotlinx.coroutines.launch
+import android.net.Uri
+import java.lang.Exception
 
-class MainViewModel (private val beersList: BeerRepository) : ViewModel(){
+class MainViewModel (private val beerRepository: BeerRepository) : ViewModel(){
 
-    var myBeerList = MutableLiveData(listOf(APIBeerModel(0,"fill","fill","fill")))
+    var beerName = MutableLiveData("Punk IPA 2007 - 2010")
+    var beerId = MutableLiveData(192)
+    var beerImageUrl = MutableLiveData(Uri.parse("https://images.punkapi.com/v2/192.png"))
+    var beerDescription =
+        MutableLiveData("""
+        |Our flagship beer that kick started the craft beer revolution. This is James and Martin's original take on an American IPA,
+        | subverted with punchy New Zealand hops. Layered with new world hops to create an all-out riot of grapefruit, pineapple and lychee before a spiky,
+        |  mouth-puckering bitter finish.
+        |  """.trimMargin())
 
-    suspend fun fill(){
+    init {
+        getAnotherBeer()
+    }
+
+    fun getAnotherBeer() {
         viewModelScope.launch {
-            myBeerList.value = beersList.listBeers()
+                val randomBeer = beerRepository.getBeer().first()
+                beerName.value = randomBeer.nombre
+                beerId.value = randomBeer.id
+                beerImageUrl.value = Uri.parse(randomBeer.imagen)
+                beerDescription.value = randomBeer.descripcion
         }
     }
 }
