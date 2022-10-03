@@ -3,15 +3,18 @@ package com.practice.apirestapp.ui.activities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.practice.apirestapp.R
+import com.practice.apirestapp.databinding.ActivityMainBinding
 import com.practice.apirestapp.ui.viewmodels.MainViewModel
-import org.koin.android.compat.ScopeCompat.viewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-private val vm: MainViewModel by viewModel()
-
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainBinding
+    private val vm: MainViewModel by viewModel()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
     }
 }
