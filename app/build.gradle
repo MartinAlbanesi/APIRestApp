@@ -61,10 +61,8 @@ dependencies {
     // Navigation Graph
     implementation "io.insert-koin:koin-androidx-navigation:$koin_version"
 
-    //Glide
-    implementation 'com.github.bumptech.glide:glide:4.13.2'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.13.2'
+    //Picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
 
     //Fragment
     implementation 'androidx.fragment:fragment-ktx:1.5.3'
@@ -76,4 +74,5 @@ dependencies {
 
     //Coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 }

@@ -9,7 +9,7 @@ import kotlinx.coroutines.launch
 
 class MainViewModel (private val beersList: BeerRepository) : ViewModel(){
 
-    private var myBeerList = MutableLiveData(listOf(APIBeerModel(0,"fill","fill","fill")))
+    var myBeerList = MutableLiveData(listOf(APIBeerModel(0,"fill","fill","fill")))
 
     suspend fun fill(){
         viewModelScope.launch {
