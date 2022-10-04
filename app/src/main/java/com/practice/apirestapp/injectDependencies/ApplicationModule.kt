@@ -13,11 +13,11 @@ import org.koin.dsl.module
 
 val remoteRepositoryModule = module {
     //Provider
-    single<BeerAPIProvider>{ BeerAPIMainProvider() }
+    single<BeerAPIProvider> { BeerAPIMainProvider() }
     //Client
-    single<BeerClient>{ BeerAPIClient(get())}
+    single<BeerClient> { BeerAPIClient(get()) }
     //Repository
-    single<BeerRepository>{ BeerAPIRepository(get()) }
+    single<BeerRepository> { BeerAPIRepository(get()) }
 
     //ViewModel
     viewModel { MainViewModel(get()) }

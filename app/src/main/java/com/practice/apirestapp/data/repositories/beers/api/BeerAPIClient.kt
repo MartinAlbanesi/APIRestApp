@@ -11,7 +11,7 @@ class BeerAPIClient(beerAPIProvider: BeerAPIProvider) : BeerClient {
 
     override suspend fun fetchBeer(): List<APIBeerModel> {
         val beerAPIResponse = beerAPI.getRandomBeer()
-        if(!beerAPIResponse.isSuccessful){
+        if (!beerAPIResponse.isSuccessful) {
             throw Exception(handleUnsuccessfulResponse(beerAPIResponse).statusMessage)
         }
 

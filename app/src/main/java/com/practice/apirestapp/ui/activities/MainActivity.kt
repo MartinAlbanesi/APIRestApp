@@ -1,9 +1,9 @@
 package com.practice.apirestapp.ui.activities
 
 import android.net.Uri
+import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import androidx.lifecycle.Observer
 import com.practice.apirestapp.databinding.ActivityMainBinding
 import com.practice.apirestapp.ui.components.ErrorMessage
@@ -48,12 +48,12 @@ class MainActivity : AppCompatActivity() {
         toast = Toast.makeText(applicationContext, "Error", Toast.LENGTH_SHORT)
 
         vm.errorMessage.observe(this, errorMessageObserver)
-        vm.beerName.observe(this,beerNameObserver)
-        vm.beerId.observe(this,beerIdObserver)
-        vm.beerImageUrl.observe(this,beerUriObserver)
-        vm.beerDescription.observe(this,beerDescriptionObserver)
+        vm.beerName.observe(this, beerNameObserver)
+        vm.beerId.observe(this, beerIdObserver)
+        vm.beerImageUrl.observe(this, beerUriObserver)
+        vm.beerDescription.observe(this, beerDescriptionObserver)
 
-        binding.imgBeer.setOnClickListener{
+        binding.imgBeer.setOnClickListener {
             vm.getAnotherBeer()
         }
 
