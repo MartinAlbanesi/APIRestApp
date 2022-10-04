@@ -6,5 +6,5 @@ import retrofit2.http.GET
 
 interface BeerAPI {
     @GET("beers/random")
-    fun getRandomBeer(): Response<List<APIBeerModel>>
+    suspend fun getRandomBeer(): Response<List<APIBeerModel>>
 }

@@ -4,10 +4,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.practice.apirestapp.data.repositories.BeerRepository
-import com.practice.apirestapp.data.repositories.beers.api.models.APIBeerModel
 import kotlinx.coroutines.launch
 import android.net.Uri
-import java.lang.Exception
 
 class MainViewModel (private val beerRepository: BeerRepository) : ViewModel(){
 
@@ -27,7 +25,7 @@ class MainViewModel (private val beerRepository: BeerRepository) : ViewModel(){
 
     fun getAnotherBeer() {
         viewModelScope.launch {
-                val randomBeer = beerRepository.getBeer().first()
+                val randomBeer = beerRepository.getBeer()
                 beerName.value = randomBeer.nombre
                 beerId.value = randomBeer.id
                 beerImageUrl.value = Uri.parse(randomBeer.imagen)
